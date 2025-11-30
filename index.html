@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red Tape 研究思维导图</title>
+<style>
+  /* 让思维导图铺满全屏 */
+  html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; }
+  svg { width: 100%; height: 100%; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.15.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.15.4/dist/browser/index.min.js"></script>
+</head>
+<body>
+<svg id="mindmap"></svg>
+
+<script>
+// ============================================
+// 在下面修改你的文献内容 (Markdown 格式)
+// 格式说明：
+// # 是一级标题，## 是二级标题，- 是列表
+// [显示文字](链接地址) 可以添加超链接
+// ============================================
+const markdown = `
+# Red Tape Research (繁文缛节研究)
+
+## 1. 核心概念 (Concepts)
+- **Bozeman (1993)**: A Theory of Government "Red Tape"
+- **Pandey & Scott (2002)**: Red Tape: A Review
+- [点击查看 Google Scholar 概念搜索](https://scholar.google.com/scholar?q=red+tape+definition+public+administration)
+
+## 2. 测量方法 (Methods)
+- **感知测量 (Perceptual)**
+    - Rainey et al. (1995)
+- **客观测量 (Objective)**
+    - Processing time (审批时间)
+    - Number of forms (表格数量)
+
+## 3. 前因 (Antecedents)
+- **政治因素**
+    - External Control (外部控制)
+- **组织结构**
+    - Centralization (集权)
+
+## 4. 后果 (Consequences)
+- **对员工 (Employee)**
+    - Job Satisfaction (满意度下降)
+    - [**Moynihan & Pandey (2007)**: PSM Crowding Out](https://scholar.google.com/)
+- **对组织 (Org)**
+    - Performance Decline (绩效下降)
+
+## 5. 最新前沿 (Updates 2024-2025)
+- **数字化 (Digitization)**
+    - Does AI reduce red tape?
+- **行为公管 (Behavioral PA)**
+`;
+// ============================================
+// 结束内容编辑
+// ============================================
+
+const transformer = new markmap.Transformer();
+const { root, features } = transformer.transform(markdown);
+markmap.Markmap.create('#mindmap', null, root);
+</script>
+</body>
+</html>
